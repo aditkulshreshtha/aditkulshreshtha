@@ -1,0 +1,4 @@
+id,title,domain,likelihood,impact,control_status,owner,due_date
+R1,Secrets rotation overdue,Security,4,5,Missing,Platform Team,2026-05-15
+R2,Single region dependency,Resiliency,3,5,Partial,Infra Team,2026-06-01
+R3,Manual monthly report,Operations,2,3,Weak,PMO,2026-05-10
