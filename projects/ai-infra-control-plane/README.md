@@ -23,6 +23,16 @@ This project models a simplified AI infrastructure control plane with reusable s
 - Capacity and utilization reporting
 - Executive-ready metrics framing
 
+## Tradeoffs
+
+| Decision | Benefit | Risk |
+|---|---|---|
+| Strict priority scheduling | Maximizes business value | Starves lower priority teams |
+| Fair-share quotas | Prevents resource hogging | May delay critical launches |
+| No preemption | Stable workloads | Slower response to urgent jobs |
+| Aggressive failover | Fast recovery | Overloads healthy clusters |
+| Reserved inference capacity | Protects customers | Underutilized GPUs during low load |
+
 ## Architecture
 
 ```text
