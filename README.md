@@ -1,87 +1,100 @@
+# Adit Kulshreshtha
 
-def generate_github_readme(name, interests, learning, collaboration, contact):
-    """
-    Generate an enhanced GitHub profile README
-    
-    Args:
-        name (str): Your name
-        interests (list): List of interests
-        learning (str): What you're currently learning
-        collaboration (str): What you want to collaborate on
-        contact (str): How to reach you
-    
-    Returns:
-        str: Formatted README content
-    """
-    
-    readme_template = f"""# 👋 Hi, I'm {name}
-
-## 🚀 About Me
-I'm a passionate technologist with a keen interest in exploring and mastering emerging technologies. Currently diving deep into the world of Python and its applications in modern software development.
-
-## 💡 What I'm Up To
-- 🌱 **Currently Learning:** {learning}
-- 🤖 **Interests:** {', '.join(interests)}
-- 🎯 **Current Goal:** Building an AI-powered document enhancement tool similar to ChatGPT
-- 💼 **Looking to Collaborate:** {collaboration}
-
-## 🔧 Technologies & Tools
-- **Languages:** Python (learning)
-- **Interests:** Generative AI, LLMs, Document Intelligence
-- **Focus Areas:** Natural Language Processing, AI-powered productivity tools
-
-## 🌟 Featured Projects
-*Coming soon - Building something exciting with generative AI!*
-
-## 💞️ Let's Collaborate
-I'm actively seeking collaboration opportunities on:
-- Generative AI applications
-- Document processing and enhancement tools
-- ChatGPT-like conversational AI systems
-- Python-based AI/ML projects
-
-## 📫 Get In Touch
-- 💬 {contact}
-- 🤝 Open to discussions about AI, Python, and innovative tech solutions
+### Scaling infrastructure, organizations, and AI-era execution systems.
 
 ---
 
-*"Learning today, building tomorrow"* 🚀
-"""
-    
-    return readme_template
+## 🚀 About Me
+Senior Technical Program Manager at Amazon focused on hyperscale infrastructure, distributed systems resiliency, operational excellence, and AI-era platform strategy.
 
+I work at the intersection of:
+- Distributed Systems
+- AI Infrastructure Readiness
+- Cloud Scalability
+- Infrastructure Resiliency
+- Technical Program Leadership
+- Operational Excellence
+- Large-Scale Execution
 
-# Example usage
-if __name__ == "__main__":
-    # Your information
-    name = "Adit Kulshreshtha"
-    interests = [
-        "Generative AI",
-        "Machine Learning",
-        "Natural Language Processing",
-        "Document Intelligence"
-    ]
-    learning = "Python programming and its ecosystem"
-    collaboration = "Open to projects involving generative AI and intelligent document processing"
-    contact = "Feel free to reach out - just text me!"
-    
-    # Generate README
-    readme_content = generate_github_readme(
-        name=name,
-        interests=interests,
-        learning=learning,
-        collaboration=collaboration,
-        contact=contact
-    )
-    
-    # Print the README
-    print(readme_content)
-    
-    # Optionally save to file
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.write(readme_content)
-    
-    print("
-✅ README.md generated successfully!")
+Over the years, I’ve led initiatives involving:
+- Multi-region resiliency programs
+- Cross-region infrastructure strategy
+- Large-scale cloud optimization efforts
+- Executive-level operational reviews
+- Platform modernization and governance
+- AI-assisted productivity and workflow concepts
 
+---
+
+## 🧠 Current Focus
+
+- Building AI-native operational workflows
+- Exploring autonomous execution systems
+- Scaling technical leadership in the AI era
+- Infrastructure visibility and governance concepts
+- Leveraging LLMs for productivity and decision-making
+
+---
+
+## ⚡ Areas of Interest
+
+AWS • Distributed Systems • DynamoDB • S3 • EC2 • CDK • Infrastructure Strategy • Observability • AI Infrastructure • System Design • Automation • LLM Workflows
+
+---
+
+## 📈 Impact
+
+- Led resiliency initiatives across large-scale distributed services
+- Drove infrastructure optimization programs impacting multi-million dollar spend
+- Partnered across engineering, operations, and executive leadership organizations
+- Worked on regional expansion and hyperscale infrastructure strategy
+- Focused on improving execution velocity, operational maturity, and platform scalability
+
+---
+
+## 🛠️ Tech + Leadership
+
+```yaml
+Cloud:
+  - AWS
+  - Distributed Infrastructure
+  - Resiliency Engineering
+
+Program Leadership:
+  - Cross-functional Execution
+  - Executive Communication
+  - Strategic Planning
+  - Operational Excellence
+
+Emerging Areas:
+  - Generative AI
+  - AI Infrastructure
+  - Autonomous Workflows
+  - Human + AI Productivity Systems
+```
+
+---
+
+## 🌍 Philosophy
+
+Technology leadership is no longer just about delivery.
+
+The future belongs to leaders who can combine:
+- systems thinking
+- technical depth
+- execution excellence
+- and AI leverage
+
+I’m deeply interested in building that future.
+
+---
+
+## 🤝 Connect
+
+- 💼 LinkedIn: https://linkedin.com/in/aditkul
+- 🧠 Exploring AI, infrastructure, and systems at scale
+- 🚀 Always learning and building
+
+---
+
+> "Build systems that scale. Build teams that adapt. Build for the future."
