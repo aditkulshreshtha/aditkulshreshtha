@@ -91,7 +91,7 @@ I’m deeply interested in building that future.
 
 ## 🤝 Connect
 
-- 💼 LinkedIn: https://linkedin.com/in/aditkul
+- 💼 LinkedIn: https://www.linkedin.com/in/aditkulshreshtha/
 - 🧠 Exploring AI, infrastructure, and systems at scale
 - 🚀 Always learning and building
 
