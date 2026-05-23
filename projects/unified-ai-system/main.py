@@ -16,19 +16,17 @@ requests = [
     {"id": 7, "priority": "high"},
 ]
 
-# starting system pressure
 system_load = 0.65
 
 print("\n=== STARTING UNIFIED AI SYSTEM SIMULATION ===\n")
 
+# INITIAL REQUEST PROCESSING
 for request in requests:
 
-    # simulate increasing pressure/load
     system_load += 0.08
 
     state = scheduler.submit(request, system_load)
 
-    # rejection handling
     if state == "rejected":
         metrics.record_rejected()
 
@@ -41,7 +39,6 @@ for request in requests:
 
         continue
 
-    # queue handling
     if state == "queued":
         metrics.record_queued()
 
@@ -54,30 +51,24 @@ for request in requests:
 
         continue
 
-    # allocate token budget
     tokens = allocator.allocate(
         request["priority"],
         system_load
     )
 
-    # choose model tier
     model = allocator.choose_model(
         request["priority"],
         system_load
     )
 
-    # fallback behavior during overload
     if system_load > 0.90:
         model = "cheap"
         metrics.record_fallback()
 
-    # estimate operational cost
     cost = allocator.estimate_cost(tokens, model)
 
-    # estimate gpu impact
     gpu_load = allocator.estimate_gpu_load(tokens, model)
 
-    # update metrics
     metrics.record_processed(tokens, cost)
 
     print(
@@ -88,6 +79,43 @@ for request in requests:
         f"tokens={tokens} "
         f"model={model} "
         f"gpu_load={round(gpu_load, 2)} "
+        f"cost=${round(cost, 4)}"
+    )
+
+# RECOVERY PHASE
+print("\n=== RECOVERY / QUEUE DRAIN PHASE ===\n")
+
+while scheduler.queue:
+
+    # simulate recovery
+    system_load -= 0.12
+
+    if system_load < 0.50:
+        system_load = 0.50
+
+    request = scheduler.queue.pop(0)
+
+    tokens = allocator.allocate(
+        request["priority"],
+        system_load
+    )
+
+    model = allocator.choose_model(
+        request["priority"],
+        system_load
+    )
+
+    cost = allocator.estimate_cost(tokens, model)
+
+    metrics.record_processed(tokens, cost)
+
+    print(
+        f"[DRAINED] "
+        f"Request={request['id']} "
+        f"priority={request['priority']} "
+        f"load={round(system_load, 2)} "
+        f"tokens={tokens} "
+        f"model={model} "
         f"cost=${round(cost, 4)}"
     )
 
