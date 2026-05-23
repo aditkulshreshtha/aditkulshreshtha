@@ -57,13 +57,17 @@ for request in requests:
         system_load
     )
 
+    normal_model = allocator.choose_model(
+        request["priority"],
+        0.0
+    )
+
     model = allocator.choose_model(
         request["priority"],
         system_load
     )
 
-    if system_load > 0.90:
-        model = "cheap"
+    if system_load >= 0.90 and model == "cheap" and normal_model != "cheap":
         metrics.record_fallback()
 
     cost = allocator.estimate_cost(tokens, model)
@@ -104,10 +108,18 @@ while scheduler.queue:
         system_load
     )
 
+    normal_model = allocator.choose_model(
+        request["priority"],
+        0.0
+    )
+
     model = allocator.choose_model(
         request["priority"],
         system_load
     )
+
+    if system_load >= 0.90 and model == "cheap" and normal_model != "cheap":
+        metrics.record_fallback()
 
     cost = allocator.estimate_cost(tokens, model)
 
