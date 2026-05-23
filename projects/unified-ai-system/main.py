@@ -24,6 +24,7 @@ print("\n=== STARTING UNIFIED AI SYSTEM SIMULATION ===\n")
 for request in requests:
 
     system_load += 0.08
+    metrics.update_peak_load(system_load)
 
     state = scheduler.submit(request, system_load)
 
@@ -92,8 +93,11 @@ while scheduler.queue:
 
     if system_load < 0.50:
         system_load = 0.50
+    metrics.update_peak_load(system_load)
 
     request = scheduler.queue.pop(0)
+
+    metrics.record_drained()
 
     tokens = allocator.allocate(
         request["priority"],
@@ -121,7 +125,10 @@ while scheduler.queue:
 
 print("\n=== FINAL METRICS ===\n")
 
-summary = metrics.summary(system_load)
+summary = metrics.summary(
+    system_load,
+    scheduler.queue_size()
+)
 
 for key, value in summary.items():
     print(f"{key}: {value}")
