@@ -1,100 +1,157 @@
 # Adit Kulshreshtha
 
-### Scaling infrastructure, organizations, and AI-era execution systems.
+### AI Systems TPM | Infrastructure, reliability, governance, and execution at scale
 
 ---
 
-## 🚀 About Me
+## About Me
+
 Senior Technical Program Manager at Amazon focused on hyperscale infrastructure, distributed systems resiliency, operational excellence, and AI-era platform strategy.
 
 I work at the intersection of:
-- Distributed Systems
-- AI Infrastructure Readiness
-- Cloud Scalability
-- Infrastructure Resiliency
-- Technical Program Leadership
-- Operational Excellence
-- Large-Scale Execution
 
-Over the years, I’ve led initiatives involving:
-- Multi-region resiliency programs
-- Cross-region infrastructure strategy
-- Large-scale cloud optimization efforts
-- Executive-level operational reviews
-- Platform modernization and governance
-- AI-assisted productivity and workflow concepts
+- AI infrastructure and platform operations
+- Distributed systems resiliency
+- Cloud scalability and cost optimization
+- Technical program leadership
+- Operational governance
+- Executive-level execution systems
+
+My current focus is building practical AI systems thinking across infrastructure, token economics, reliability, governance, and operating models.
 
 ---
 
-## 🧠 Current Focus
+## Featured Projects
+
+### Unified AI System
+`projects/unified-ai-system/`
+
+A runnable simulation for AI platform operations under pressure. It models request prioritization, queueing, rejection, token allocation, model fallback, cost tracking, and recovery behavior.
+
+**What it demonstrates:**
+- AI workload scheduling
+- token and cost control
+- overload management
+- queue draining and recovery
+- operational metrics
+- TPM-style tradeoff thinking
+
+---
+
+### AI Infrastructure Control Plane
+`projects/ai-infra-control-plane/`
+
+A platform-style simulation for managing GPU capacity, workload prioritization, failover behavior, and policy-based allocation across AI infrastructure.
+
+**What it demonstrates:**
+- GPU capacity awareness
+- priority-based scheduling
+- failover concepts
+- quota and policy thinking
+- platform-level orchestration
+
+---
+
+### LLM Cost Control System
+`projects/llm-cost-control/`
+
+A layered system for controlling LLM token usage, cost, context size, and adaptive model selection.
+
+**What it demonstrates:**
+- token budgeting
+- context optimization
+- adaptive allocation
+- feedback loops
+- cost-aware AI operations
+
+---
+
+### Risk Reporting Engine
+`projects/risk-reporting-engine/`
+
+A lightweight Python project for scoring operational risks and producing executive-friendly risk summaries.
+
+**What it demonstrates:**
+- risk scoring logic
+- controls thinking
+- executive reporting structure
+- operational governance framing
+
+---
+
+## Current Focus
 
 - Building AI-native operational workflows
-- Exploring autonomous execution systems
-- Scaling technical leadership in the AI era
-- Infrastructure visibility and governance concepts
-- Leveraging LLMs for productivity and decision-making
+- Developing practical AI infrastructure simulations
+- Exploring AI reliability and governance systems
+- Strengthening Principal TPM / AI platform leadership skills
+- Connecting technical systems to business tradeoffs and executive decisions
 
 ---
 
-## ⚡ Areas of Interest
+## Areas of Interest
 
-AWS • Distributed Systems • DynamoDB • S3 • EC2 • CDK • Infrastructure Strategy • Observability • AI Infrastructure • System Design • Automation • LLM Workflows
-
----
-
-## 📈 Impact
-
-- Led resiliency initiatives across large-scale distributed services
-- Drove infrastructure optimization programs impacting multi-million dollar spend
-- Partnered across engineering, operations, and executive leadership organizations
-- Worked on regional expansion and hyperscale infrastructure strategy
-- Focused on improving execution velocity, operational maturity, and platform scalability
+AWS • Distributed Systems • AI Infrastructure • GPU Capacity • LLM Cost Control • Reliability Engineering • Governance Systems • Observability • Platform Strategy • Technical Program Leadership • Executive Communication
 
 ---
 
-## 🛠️ Tech + Leadership
+## Impact Themes
+
+- Multi-region resiliency and distributed systems operations
+- Large-scale cloud optimization and infrastructure governance
+- Cross-functional execution across engineering, operations, and leadership teams
+- Platform modernization and operational excellence
+- AI-assisted productivity, workflow, and governance concepts
+
+---
+
+## Tech + Leadership
 
 ```yaml
 Cloud:
   - AWS
   - Distributed Infrastructure
   - Resiliency Engineering
+  - Cost Optimization
+
+AI Systems:
+  - AI Infrastructure
+  - Token Economics
+  - Retrieval and Governance
+  - Workload Orchestration
+  - Reliability Controls
 
 Program Leadership:
   - Cross-functional Execution
   - Executive Communication
   - Strategic Planning
   - Operational Excellence
-
-Emerging Areas:
-  - Generative AI
-  - AI Infrastructure
-  - Autonomous Workflows
-  - Human + AI Productivity Systems
+  - Risk and Governance
 ```
 
 ---
 
-## 🌍 Philosophy
+## Operating Philosophy
 
 Technology leadership is no longer just about delivery.
 
 The future belongs to leaders who can combine:
+
 - systems thinking
 - technical depth
-- execution excellence
-- and AI leverage
+- operational execution
+- business judgment
+- AI leverage
 
-I’m deeply interested in building that future.
-
----
-
-## 🤝 Connect
-
-- 💼 LinkedIn: https://www.linkedin.com/in/aditkulshreshtha/
-- 🧠 Exploring AI, infrastructure, and systems at scale
-- 🚀 Always learning and building
+I am focused on building that operating model.
 
 ---
 
-> "Build systems that scale. Build teams that adapt. Build for the future."
+## Connect
+
+- LinkedIn: https://www.linkedin.com/in/aditkulshreshtha/
+- Focus: AI systems, infrastructure strategy, platform reliability, and execution at scale
+
+---
+
+> Build systems that scale. Build teams that adapt. Build for the future.
