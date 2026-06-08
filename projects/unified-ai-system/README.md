@@ -49,7 +49,7 @@ TokenAllocator -----+
       |
       v
 CapacityManager ---> next tick load
-      |
+      |    ^_________________________________|
       v
 Metrics
 ```
@@ -98,13 +98,16 @@ Accepted requests also report a `trim_strategy`. High-priority requests preserve
 ## Sample output
 
 ```text
+=== STARTING UNIFIED AI SYSTEM SIMULATION ===
+
+
 --- TICK 1 load=0.45 remaining_gpu=1.25 remaining_cost=$0.018 queue=0 ---
-[TICK 1:PROCESSED] Request=1 priority=high load_before=0.45 load_after=1.05 action=trim_and_optimize granted_tokens=3000 trim_strategy=summarize_low_relevance model=balanced queue_wait=0
+[TICK 1:PROCESSED] Request=1 priority=high load_before=0.45 load_after=1.05 effective_load=0.25 action=trim_and_optimize requested_tokens=6200 granted_tokens=3000 trimmed_tokens=3200 trim_strategy=summarize_low_relevance model=balanced quality=0.4 gpu_load=0.6 cost=$0.006 queue_wait=0
 [TICK 1:QUEUED] Request=2 priority=medium load=1.05 deadline=3 requested_tokens=3200
 
 --- TICK 2 load=0.83 remaining_gpu=0.87 remaining_cost=$0.018 queue=1 ---
 [TICK 2:QUEUED] Request=3 priority=low load=0.83 deadline=5 requested_tokens=1400
-[TICK 2:PROCESSED] Request=4 priority=high load_before=0.83 load_after=1.35 action=trim_and_optimize granted_tokens=3000 trim_strategy=summarize_low_relevance model=balanced queue_wait=0
+[TICK 2:PROCESSED] Request=4 priority=high load_before=0.83 load_after=1.35 effective_load=0.63 action=trim_and_optimize requested_tokens=7800 granted_tokens=3000 trimmed_tokens=4800 trim_strategy=summarize_low_relevance model=balanced quality=0.32 gpu_load=0.6 cost=$0.006 queue_wait=0
 
 --- TICK 3 load=1.21 remaining_gpu=0.49 remaining_cost=$0.018 queue=2 ---
 [TICK 3:REJECTED] Request=5 priority=low reason=low_priority_load_shed requested_tokens=2200 queue_wait=0
@@ -112,22 +115,36 @@ Accepted requests also report a `trim_strategy`. High-priority requests preserve
 
 --- TICK 4 load=0.99 remaining_gpu=0.71 remaining_cost=$0.018 queue=3 ---
 [TICK 4:REJECTED] Request=2 priority=medium reason=deadline_expired requested_tokens=3200 queue_wait=3
-[TICK 4:PROCESSED:REJECTED] Request=7 priority=high reason=below_minimum_tokens requested_tokens=9000 best_effort_tokens=2640 model=balanced
+[TICK 4:PROCESSED:REJECTED] Request=7 priority=high load=0.99 effective_load=0.79 reason=below_minimum_tokens requested_tokens=9000 best_effort_tokens=2640 model=balanced quality=0.0 minimum_quality=0.3 remaining_gpu=0.71 remaining_cost=$0.018
 
 --- TICK 5 load=0.77 remaining_gpu=0.93 remaining_cost=$0.018 queue=2 ---
-[TICK 5:DRAINED] Request=6 priority=medium load_before=0.77 load_after=0.95 action=trim_and_optimize granted_tokens=2000 model=cheap queue_wait=2
+[TICK 5:DRAINED] Request=6 priority=medium load_before=0.77 load_after=0.95 effective_load=0.69 action=trim_and_optimize requested_tokens=4800 granted_tokens=2000 trimmed_tokens=2800 trim_strategy=drop_oldest_then_summarize model=cheap quality=0.27 gpu_load=0.18 cost=$0.002 queue_wait=2
+
+--- TICK 6 load=0.73 remaining_gpu=0.97 remaining_cost=$0.018 queue=1 ---
+[TICK 6:REJECTED] Request=3 priority=low reason=deadline_expired requested_tokens=1400 queue_wait=4
+
+=== FINAL METRICS ===
 
 processed: 3
 processed_by_priority: {'high': 2, 'medium': 1}
+queued_initial: 3
+drained: 1
+remaining_queue: 0
+rejected: 4
+fallbacks: 3
+model_optimizations: 3
 rejection_reasons: {'low_priority_load_shed': 1, 'deadline_expired': 2, 'below_minimum_tokens': 1}
 requested_tokens: 34600
 granted_tokens: 8000
 trimmed_tokens: 10800
 unserved_tokens: 15800
 token_accounting_delta: 0
+total_cost: 0.014
 latency_ticks_by_priority: {'high': {'avg': 0.0, 'p95': 0, 'p99': 0, 'max': 0}, 'medium': {'avg': 2.0, 'p95': 2, 'p99': 2, 'max': 2}}
 peak_system_load: 1.21
 final_system_load: 0.51
+
+=== SIMULATION COMPLETE ===
 ```
 
 ## Tradeoffs
@@ -164,4 +181,4 @@ This is a control-plane simulation, not a production inference gateway. Useful n
 
 ## Portfolio angle
 
-This demonstrates AI infrastructure product judgment: protecting critical traffic, making degradation explicit, connecting token economics to GPU capacity, and using metrics to explain why the control plane accepted, degraded, queued, or rejected each request.
+A TPM reviewing a live inference system gets asked: "Why did Request 7 fail even though it was high priority?" This simulation gives a precise answer: the system could grant 2,640 tokens, but the caller's minimum useful context was 3,000 tokens, so spending GPU on a degraded answer was worse than an honest rejection. That is the judgment this control plane makes explicit.
