@@ -103,7 +103,12 @@ Accepted requests also report a `trim_strategy`. High-priority requests preserve
 [TICK 1:QUEUED] Request=2 priority=medium load=1.05 deadline=3 requested_tokens=3200
 
 --- TICK 2 load=0.83 remaining_gpu=0.87 remaining_cost=$0.018 queue=1 ---
+[TICK 2:QUEUED] Request=3 priority=low load=0.83 deadline=5 requested_tokens=1400
 [TICK 2:PROCESSED] Request=4 priority=high load_before=0.83 load_after=1.35 action=trim_and_optimize granted_tokens=3000 trim_strategy=summarize_low_relevance model=balanced queue_wait=0
+
+--- TICK 3 load=1.21 remaining_gpu=0.49 remaining_cost=$0.018 queue=2 ---
+[TICK 3:REJECTED] Request=5 priority=low reason=low_priority_load_shed requested_tokens=2200 queue_wait=0
+[TICK 3:QUEUED] Request=6 priority=medium load=1.21 deadline=6 requested_tokens=4800
 
 --- TICK 4 load=0.99 remaining_gpu=0.71 remaining_cost=$0.018 queue=3 ---
 [TICK 4:REJECTED] Request=2 priority=medium reason=deadline_expired requested_tokens=3200 queue_wait=3
