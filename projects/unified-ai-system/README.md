@@ -150,6 +150,18 @@ final_system_load: 0.51
 - Request 7 was rejected even though it was high priority because the best feasible option could grant only 2,640 tokens against a 3,000-token minimum. The system avoids spending GPU on an answer that would miss the caller's minimum useful context.
 - The run requested 34,600 tokens but granted 8,000. The difference split into 10,800 served-token trims and 15,800 unserved rejected/expired tokens, with `token_accounting_delta: 0` proving the accounting is closed.
 
+## What's not modeled yet
+
+This is a control-plane simulation, not a production inference gateway. Useful next steps would be:
+
+- Real context trimming. `trim_strategy` is currently a policy label; production code would need actual chunk ranking, summarization, and prompt packing.
+- Request profiling. The simulation accepts `requested_tokens` and `minimum_tokens`; a real platform would derive those from the prompt, documents, code diff, output budget, and task policy.
+- Dynamic arrival rates. Requests currently arrive at hardcoded ticks; a stronger simulation would generate bursty, steady-state, and incident-style traffic patterns.
+- Multi-region capacity pools. The capacity manager models one shared GPU pool; production systems often route across regions, clusters, or model-serving backends.
+- Adaptive policies. Thresholds, recovery rate, model weights, and deadlines are static; production policies would be tuned from telemetry and eval outcomes.
+- Real cost and latency curves. GPU load and cost are simplified estimates; production systems would use measured model latency, queue depth, memory pressure, and provider pricing.
+- Backpressure responses. Rejection is logged, but a real API would return retry-after hints, partial-result options, or a request to narrow scope.
+
 ## Portfolio angle
 
 This demonstrates AI infrastructure product judgment: protecting critical traffic, making degradation explicit, connecting token economics to GPU capacity, and using metrics to explain why the control plane accepted, degraded, queued, or rejected each request.
